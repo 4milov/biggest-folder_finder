@@ -15,17 +15,17 @@ public class FolderSizeCalculator extends RecursiveTask<Long> {
             return folder.length();
         }
         long sum = 0;
-        List<FolderSizeCalculator> subTask = new LinkedList<>();
+        List<FolderSizeCalculator> subTask = new LinkedList<>(); //подзадачи в список
         File[] files = folder.listFiles();
         assert files != null;
         for(File file : files){
             FolderSizeCalculator task = new FolderSizeCalculator(file);
-            task.fork();
-            subTask.add(task);
+            task.fork(); // ассинхронный запуск задачи
+            subTask.add(task); // добавляем в список подзадач
         }
 
         for(FolderSizeCalculator task : subTask){
-            sum+= task.join();
+            sum+= task.join(); //дожидается выполнения задачи(в потоке) и возвращает результат ее выполнения
         }
         return sum;
     }
