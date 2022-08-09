@@ -17,7 +17,7 @@ public class Main {
 
         FolderSizeCalculator calculator = new FolderSizeCalculator(file);
         ForkJoinPool pool = new ForkJoinPool(); //используется для распределения нагрузки между потоками
-        long size = pool.invoke(calculator); // invoke возвращает размер
+        long size = pool.invoke(calculator); // invoke возвращает результат (в нашем случае размер)
         System.out.println(size);
 
         long duration1 = System.currentTimeMillis() - start1;
