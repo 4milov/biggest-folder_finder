@@ -1,8 +1,6 @@
 import java.io.File;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ForkJoinPool;
-import java.util.stream.Collectors;
 
 public class Main {
     private final static char[] sizeMultipiers = {'B', 'K','M', 'G', 'T'};
