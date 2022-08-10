@@ -33,6 +33,7 @@ public class Main {
 
         System.out.println(getSizeFromHumanReadable("235K")); // Из Кб переводит в байты
         System.out.println(getHumanReadableSize(240640)); // Из байтов переводит в килобайты
+        System.exit(0);
 
 
     }
