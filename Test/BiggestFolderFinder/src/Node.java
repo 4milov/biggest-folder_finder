@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Node {
 
@@ -33,6 +34,9 @@ public class Node {
     }
 
     public String toString(){
-        return "";
+        String size = SizeCalculator.getHumanReadableSize(getSize());
+        return size;
     }
+
+
 }
