@@ -10,9 +10,10 @@ public class SizeCalculator {
     //Байты в Кб, Мб, Гб
     public static String getHumanReadableSize(long size){
         for(int i = 0; i < sizeMultipiers.length; i++){
-            double value = size / Math.pow(1024, i);
+            double value = ((double) size) / Math.pow(1024, i);
             if(value < 1024) {
-                return Math.round(value) + "" + sizeMultipiers[i] + (i>0 ? "b" : "");
+                return Math.round(value * 100)/100. //для двух знаков после запятой
+                        + "" + sizeMultipiers[i] + (i>0 ? "b" : "");
             }
         }
         return "Very big!";
