@@ -9,6 +9,7 @@ public class Node {
 
     public Node(File folder){
         this.folder = folder;
+        children = new ArrayList<>();
     }
 
     public File getFolder(){
@@ -29,5 +30,9 @@ public class Node {
 
     public void setSize(long size) {
         this.size = size;
+    }
+
+    public String toString(){
+        return "";
     }
 }

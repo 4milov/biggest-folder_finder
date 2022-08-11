@@ -9,14 +9,21 @@ public class Main {
 
         String folderPath = "D:/разбор";
         File file = new File(folderPath);
+        Node root = new Node(file);
 
         //Сравнение длительности выполнения методов ForkJoinPool и getFolderSize
         long start1 = System.currentTimeMillis();
 
-        FolderSizeCalculator calculator = new FolderSizeCalculator(file);
+//        FolderSizeCalculator calculator = new FolderSizeCalculator(file);
+//        ForkJoinPool pool = new ForkJoinPool(); //используется для распределения нагрузки между потоками
+//        long size = pool.invoke(calculator); // invoke возвращает результат (в нашем случае размер)
+//        System.out.println(size);
+
+
+        FolderSizeCalculator calculator = new FolderSizeCalculator(root);
         ForkJoinPool pool = new ForkJoinPool(); //используется для распределения нагрузки между потоками
-        long size = pool.invoke(calculator); // invoke возвращает результат (в нашем случае размер)
-        System.out.println(size);
+        pool.invoke(calculator); // invoke возвращает результат (в нашем случае размер)
+        System.out.println(root);
 
         long duration1 = System.currentTimeMillis() - start1;
 
