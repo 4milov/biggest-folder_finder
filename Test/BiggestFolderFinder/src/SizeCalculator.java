@@ -6,20 +6,6 @@ public class SizeCalculator {
     private final static char[] sizeMultipiers = {'B', 'K','M', 'G', 'T'};
     private static HashMap<Character, Integer> char2multiplier = getMultipliers();
 
-//    //Получение размера папки
-//    private static long getFolderSize(File folder) {
-//        if (folder.isFile()) {
-//            return folder.length();
-//        }
-//        long sum = 0;
-//
-//        File[] files = folder.listFiles();
-//        assert files != null;
-//        for (File file : files) {
-//            sum += getFolderSize(file);
-//        }
-//        return sum;
-//    }
 
     //Байты в Кб, Мб, Гб
     public static String getHumanReadableSize(long size){
