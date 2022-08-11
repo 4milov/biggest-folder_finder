@@ -22,7 +22,7 @@ public class FolderSizeCalculator extends RecursiveTask<Long> {
         File[] files = folder.listFiles(); // добавляем в массив files список файлов
         assert files != null;
         for(File file : files){
-            Node child = new Node(file);
+            Node child = new Node(file, node.getLimit());
             FolderSizeCalculator task = new FolderSizeCalculator(child); //проходим по каждому файлу из списка и вызываем для него FolderSizeCalculator
             task.fork(); // асинхронный запуск задачи - в разные потоки
             subTask.add(task); // добавляем в список подзадач, который был создан выше

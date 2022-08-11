@@ -8,11 +8,23 @@ public class Node {
     private ArrayList<Node> children;
     private long size;
 
+    private long limit;
+
     private int level;
 
     public Node(File folder){
+        this(folder, 0);
+    }
+
+    // Конструктор с ограничением по размеру, задается в Main
+    public Node(File folder, long limit){
         this.folder = folder;
         children = new ArrayList<>();
+        this.limit = limit;
+    }
+
+    public long getLimit(){
+        return limit;
     }
 
     public File getFolder(){
@@ -42,6 +54,9 @@ public class Node {
         String size = SizeCalculator.getHumanReadableSize(getSize());
         builder.append(folder.getName()).append(" - ").append(size).append("\n");
         for (Node child : children) {
+            if(child.getSize() < limit) {
+                continue;
+            }
             builder.append("  ".repeat(this.level)).append(child.toString());
         }
         return builder.toString();

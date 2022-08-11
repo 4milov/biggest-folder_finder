@@ -6,8 +6,10 @@ public class Main {
     public static void main(String[] args) {
 
         String folderPath = "D:/разбор";
+        long sizeLimit = 50 * 1024 * 1024 ;
         File file = new File(folderPath);
-        Node root = new Node(file);
+//        Node root = new Node(file);
+        Node root = new Node(file, sizeLimit);
 
         //длительность выполнения метода ForkJoinPool
         long start1 = System.currentTimeMillis();
