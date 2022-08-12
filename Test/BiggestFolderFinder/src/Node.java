@@ -13,17 +13,17 @@ public class Node {
     private int level;
 
     public Node(File folder){
-        this(folder, 0);
+        this.folder = folder;
+        children = new ArrayList<>();
     }
 
     // Конструктор с ограничением по размеру, задается в Main
     public Node(File folder, long limit){
-        this.folder = folder;
-        children = new ArrayList<>();
+        this(folder);
         this.limit = limit;
     }
 
-    public long getLimit(){
+    private long setLimit(long limit){
         return limit;
     }
 
@@ -33,6 +33,7 @@ public class Node {
 
     public void addChild(Node node){
         node.setLevel(level + 1);
+        node.setLimit(limit);
         children.add(node);
     }
 
